@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Safe PC Solutions — কেরানীগঞ্জের বিশ্বস্ত কম্পিউটার সেবা</title>
+  <meta name="description" content="কেরানীগঞ্জে পিসি ও ল্যাপটপ মেরামত, হার্ডওয়্যার আপগ্রেড, সফটওয়্যার সমাধান। ফ্রি ডায়াগনস্টিক সুবিধা।">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>আপনার কম্পিউটারের <span>নিরাপদ সেবা</span></h1>
+      <p>কেরানীগঞ্জের সবচেয়ে বিশ্বস্ত পিসি ও ল্যাপটপ মেরামত সেবা। ফ্রি ডায়াগনস্টিক, দ্রুত সার্ভিস, অরিজিনাল পার্টস।</p>
+      <div class="hero-buttons">
+        <a href="#booking" class="btn btn-accent btn-lg">বুকিং দিন</a>
+        <a href="tracking.html" class="btn btn-outline btn-lg" style="border-color:#fff;color:#fff;">ট্র্যাক করুন</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Badges -->
+  <section class="trust-badges">
+    <div class="container">
+      <div class="badges-grid">
+        <div class="badge-card">
+          <div class="badge-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 4L6 12v12c0 11 8 18 18 20 10-2 18-9 18-20V12L24 4z" stroke="currentColor" stroke-width="3" fill="none"/>
+              <path d="M16 24l6 6 10-10" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>ডাটা সুরক্ষিত</h3>
+          <p>আপনার ডিভাইসের সকল ডাটা সম্পূর্ণ নিরাপদ থাকবে</p>
+        </div>
+        <div class="badge-card">
+          <div class="badge-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="24" r="18" stroke="currentColor" stroke-width="3" fill="none"/>
+              <path d="M24 12v12l8 4" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>দ্রুত ডেলিভারি</h3>
+          <p>বেশিরভাগ মেরামত ২৪-৪৮ ঘণ্টার মধ্যে সম্পন্ন</p>
+        </div>
+        <div class="badge-card">
+          <div class="badge-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="8" y="14" width="32" height="22" rx="3" stroke="currentColor" stroke-width="3" fill="none"/>
+              <path d="M18 14V10a6 6 0 0112 0v4" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="24" cy="26" r="3" fill="currentColor"/>
+            </svg>
+          </div>
+          <h3>অরিজিনাল পার্টস</h3>
+          <p>সকল মেরামতে ১০০% অরিজিনাল যন্ত্রাংশ ব্যবহার</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking Section -->
+  <section class="booking-section" id="booking">
+    <div class="container">
+      <h2 class="section-title">রিপেয়ার <span>বুকিং</span></h2>
+
+      <div class="booking-card" id="booking-form-section">
+        <!-- Step Indicator -->
+        <div class="step-indicator">
+          <div class="step-dot active">1</div>
+          <div class="step-line"></div>
+          <div class="step-dot">2</div>
+          <div class="step-line"></div>
+          <div class="step-dot">3</div>
+          <div class="step-line"></div>
+          <div class="step-dot">4</div>
+        </div>
+
+        <form id="booking-form" novalidate>
+          <!-- Step 1: Device Type -->
+          <div class="form-step active" id="step-1">
+            <h3>ডিভাইস সিলেক্ট করুন</h3>
+            <p class="step-desc">কোন ধরনের ডিভাইস মেরামত করতে চান?</p>
+            <div class="option-grid">
+              <div class="option-card" data-value="Desktop PC">
+                <div class="option-icon">🖥️</div>
+                <div class="option-label">ডেস্কটপ পিসি</div>
+              </div>
+              <div class="option-card" data-value="Laptop">
+                <div class="option-icon">💻</div>
+                <div class="option-label">ল্যাপটপ</div>
+              </div>
+              <div class="option-card" data-value="Printer">
+                <div class="option-icon">🖨️</div>
+                <div class="option-label">প্রিন্টার</div>
+              </div>
+              <div class="option-card" data-value="Other">
+                <div class="option-icon">⚙️</div>
+                <div class="option-label">অন্যান্য</div>
+              </div>
+            </div>
+            <div id="device-error" class="error-msg"></div>
+          </div>
+
+          <!-- Step 2: Problem -->
+          <div class="form-step" id="step-2">
+            <h3>সমস্যার ধরন</h3>
+            <p class="step-desc">কী ধরনের সমস্যা হচ্ছে?</p>
+            <div class="option-grid">
+              <div class="option-card" data-value="Hardware Issue">
+                <div class="option-icon">🔧</div>
+                <div class="option-label">হার্ডওয়্যার</div>
+              </div>
+              <div class="option-card" data-value="Software Issue">
+                <div class="option-icon">💿</div>
+                <div class="option-label">সফটওয়্যার</div>
+              </div>
+              <div class="option-card" data-value="Performance">
+                <div class="option-icon">🐌</div>
+                <div class="option-label">স্লো পারফরম্যান্স</div>
+              </div>
+              <div class="option-card" data-value="Other Problem">
+                <div class="option-icon">❓</div>
+                <div class="option-label">অন্যান্য</div>
+              </div>
+            </div>
+            <div id="problem-error" class="error-msg"></div>
+
+            <div class="form-group" style="margin-top:16px;">
+              <label for="problem-details">সমস্যার বিবরণ <span class="required">*</span></label>
+              <textarea id="problem-details" class="form-control" placeholder="আপনার সমস্যার বিস্তারিত লিখুন..." rows="3"></textarea>
+              <div id="details-error" class="error-msg"></div>
+            </div>
+          </div>
+
+          <!-- Step 3: Image Upload (Optional) -->
+          <div class="form-step" id="step-3">
+            <h3>ছবি আপলোড (ঐচ্ছিক)</h3>
+            <p class="step-desc">সমস্যার ছবি থাকলে আপলোড করুন — এটি ঐচ্ছিক।</p>
+            <div class="upload-area" id="upload-area">
+              <input type="file" id="image-upload" accept="image/*">
+              <div class="upload-icon">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 16V8m0 0l-3 3m3-3l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M20 16.7V19a2 2 0 01-2 2H6a2 2 0 01-2-2v-2.3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <p>ছবি নির্বাচন করুন বা এখানে ড্র্যাগ করুন</p>
+              <p style="font-size:0.8rem;color:var(--text-secondary);">সর্বোচ্চ ৫MB (JPG, PNG, WEBP)</p>
+              <div id="file-name" class="file-name"></div>
+            </div>
+          </div>
+
+          <!-- Step 4: Customer Info -->
+          <div class="form-step" id="step-4">
+            <h3>আপনার তথ্য</h3>
+            <p class="step-desc">যোগাযোগের জন্য আপনার তথ্য দিন।</p>
+            <div class="form-group">
+              <label for="customer-name">নাম <span class="required">*</span></label>
+              <input type="text" id="customer-name" class="form-control" placeholder="আপনার নাম">
+              <div id="name-error" class="error-msg"></div>
+            </div>
+            <div class="form-group">
+              <label for="customer-phone">মোবাইল নম্বর <span class="required">*</span></label>
+              <input type="tel" id="customer-phone" class="form-control" placeholder="01XXXXXXXXX">
+              <div id="phone-error" class="error-msg"></div>
+            </div>
+            <div class="form-group">
+              <label for="customer-email">ইমেইল (ঐচ্ছিক)</label>
+              <input type="email" id="customer-email" class="form-control" placeholder="example@email.com">
+            </div>
+          </div>
+
+          <!-- Form Navigation -->
+          <div class="form-nav">
+            <button type="button" id="prev-btn" class="btn btn-outline btn-sm" style="display:none;">পিছনে</button>
+            <button type="button" id="next-btn" class="btn btn-primary">পরবর্তী</button>
+            <button type="submit" id="submit-btn" class="btn btn-accent" style="display:none;">সাবমিট করুন</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Booking Success -->
+      <div class="booking-card">
+        <div id="booking-success" class="booking-success">
+          <div class="success-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+              <path d="M5 13l4 4L19 7" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>বুকিং সম্পন্ন হয়েছে!</h3>
+          <p>আপনার টিকেট আইডি সংরক্ষণ করুন। এটি দিয়ে মেরামতের অবস্থা ট্র্যাক করতে পারবেন।</p>
+          <div class="ticket-display">
+            <span class="ticket-id" id="display-ticket-id">SPC-XXXXXXXX-XXXX</span>
+            <button class="copy-btn" id="copy-ticket-btn" aria-label="কপি করুন">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
+                <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </button>
+          </div>
+          <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+            <a href="tracking.html" class="btn btn-primary btn-sm">ট্র্যাক করুন</a>
+            <a href="index.html" class="btn btn-outline btn-sm">হোমপেজে যান</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script src="js/components.js"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

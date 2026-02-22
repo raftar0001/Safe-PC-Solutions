@@ -1,0 +1,33 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /bookings/{ticketId} {
+      // Public: create a new booking (with field validation)
+      allow create: if
+        request.resource.data.keys().hasAll([
+          'ticketId', 'device', 'problem', 'problemDetails',
+          'customerName', 'customerPhone', 'status', 'createdAt', 'updatedAt'
+        ])
+        && request.resource.data.status == 'received'
+        && request.resource.data.ticketId is string
+        && request.resource.data.device is string
+        && request.resource.data.problem is string
+        && request.resource.data.customerName is string
+        && request.resource.data.customerPhone is string;
+
+      // Public: read a single document (for tracking by ticket ID)
+      allow get: if true;
+
+      // Admin only: list all documents
+      allow list: if request.auth != null;
+
+      // Admin only: update
+      allow update: if request.auth != null;
+
+      // Deny all deletes
+      allow delete: if false;
+    }
+  }
+}

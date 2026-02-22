@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>রিপেয়ার ট্র্যাকিং — Safe PC Solutions</title>
+  <meta name="description" content="আপনার টিকেট আইডি দিয়ে মেরামতের অবস্থা ট্র্যাক করুন।">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <section class="tracking-section">
+    <div class="container">
+      <h2 class="section-title">রিপেয়ার <span>ট্র্যাকিং</span></h2>
+
+      <div class="tracking-card">
+        <p style="text-align:center;color:var(--text-secondary);margin-bottom:20px;">
+          আপনার টিকেট আইডি দিয়ে মেরামতের বর্তমান অবস্থা দেখুন
+        </p>
+
+        <!-- Search Input -->
+        <div class="tracking-input-group">
+          <input type="text" id="ticket-input" class="form-control" placeholder="যেমন: SPC-20260222-AB12" autocomplete="off">
+          <button id="track-btn" class="btn btn-primary">অনুসন্ধান</button>
+        </div>
+
+        <!-- Error State -->
+        <div id="tracking-error" class="tracking-error"></div>
+
+        <!-- Result -->
+        <div id="tracking-result" class="tracking-result">
+          <!-- Device Info -->
+          <div class="device-info">
+            <h4>ডিভাইসের তথ্য</h4>
+            <div class="device-info-grid">
+              <div class="device-info-item">
+                <span>ডিভাইস</span>
+                <strong id="result-device">-</strong>
+              </div>
+              <div class="device-info-item">
+                <span>সমস্যা</span>
+                <strong id="result-problem">-</strong>
+              </div>
+              <div class="device-info-item">
+                <span>গ্রাহক</span>
+                <strong id="result-name">-</strong>
+              </div>
+              <div class="device-info-item">
+                <span>তারিখ</span>
+                <strong id="result-date">-</strong>
+              </div>
+            </div>
+            <div style="margin-top:12px;">
+              <span style="font-size:0.75rem;color:var(--text-secondary);">বর্তমান অবস্থা</span><br>
+              <span id="result-status-badge" class="status-badge received">-</span>
+            </div>
+          </div>
+
+          <!-- Progress Stepper -->
+          <div id="progress-stepper" class="progress-stepper">
+            <h4 style="font-size:0.95rem;margin-bottom:16px;color:var(--dark);">মেরামতের ধাপসমূহ</h4>
+            <div class="stepper-steps" id="stepper-steps"></div>
+          </div>
+
+          <!-- Status History -->
+          <div class="status-history">
+            <h4>স্ট্যাটাস হিস্টোরি</h4>
+            <div id="status-history-list"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/components.js"></script>
+  <script type="module" src="js/tracking.js"></script>
+</body>
+</html>
