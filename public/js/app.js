@@ -1,7 +1,6 @@
-// Booking Form — Step navigation, validation, image upload, Firestore write
-import { db, storage } from "./firebase-config.js";
+// Booking Form — Step navigation, validation, Firestore write
+import { db } from "./firebase-config.js";
 import { doc, setDoc, Timestamp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
-import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-storage.js";
 
 // --- Ticket ID Generator ---
 function generateTicketId() {
@@ -19,10 +18,9 @@ function generateTicketId() {
 
 // --- State ---
 let currentStep = 1;
-const totalSteps = 4;
+const totalSteps = 3;
 let selectedDevice = "";
 let selectedProblem = "";
-let uploadedFile = null;
 
 // --- DOM References ---
 const form = document.getElementById("booking-form");
@@ -92,9 +90,7 @@ function validateStep(step) {
     }
   }
 
-  // Step 3 (image) is optional
-
-  if (step === 4) {
+  if (step === 3) {
     const name = document.getElementById("customer-name").value.trim();
     const phone = document.getElementById("customer-phone").value.trim();
 
@@ -152,54 +148,15 @@ function setupOptionCards() {
   });
 }
 
-// --- Image Upload ---
-function setupImageUpload() {
-  const fileInput = document.getElementById("image-upload");
-  const uploadArea = document.getElementById("upload-area");
-  const fileName = document.getElementById("file-name");
-
-  if (!fileInput) return;
-
-  fileInput.addEventListener("change", (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-
-    if (!file.type.startsWith("image/")) {
-      showToast("শুধুমাত্র ছবি ফাইল আপলোড করুন", "error");
-      fileInput.value = "";
-      return;
-    }
-
-    if (file.size > 5 * 1024 * 1024) {
-      showToast("ফাইলের সাইজ ৫MB এর কম হতে হবে", "error");
-      fileInput.value = "";
-      return;
-    }
-
-    uploadedFile = file;
-    uploadArea.classList.add("has-file");
-    fileName.textContent = file.name;
-  });
-}
-
 // --- Form Submission ---
 async function handleSubmit() {
-  if (!validateStep(4)) return;
+  if (!validateStep(3)) return;
 
   submitBtn.disabled = true;
   submitBtn.innerHTML = '<span class="spinner"></span> সাবমিট হচ্ছে...';
 
   try {
     const ticketId = generateTicketId();
-    let imageUrl = null;
-
-    // Upload image if present
-    if (uploadedFile) {
-      const ext = uploadedFile.name.split(".").pop();
-      const imageRef = ref(storage, `booking-images/${ticketId}.${ext}`);
-      await uploadBytes(imageRef, uploadedFile);
-      imageUrl = await getDownloadURL(imageRef);
-    }
 
     // Build booking document
     const booking = {
@@ -207,7 +164,6 @@ async function handleSubmit() {
       device: selectedDevice,
       problem: selectedProblem,
       problemDetails: document.getElementById("problem-details").value.trim(),
-      imageUrl,
       customerName: document.getElementById("customer-name").value.trim(),
       customerPhone: document.getElementById("customer-phone").value.trim(),
       customerEmail: document.getElementById("customer-email").value.trim() || null,
@@ -267,7 +223,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   showStep(1);
   setupOptionCards();
-  setupImageUpload();
   setupCopyButton();
 
   nextBtn.addEventListener("click", nextStep);

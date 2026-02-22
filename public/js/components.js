@@ -9,6 +9,7 @@ function getActivePage() {
   if (path.endsWith("index.html") || path === "/" || path.endsWith("/public/")) return "home";
   if (path.includes("services")) return "services";
   if (path.includes("tracking")) return "tracking";
+  if (path.includes("about")) return "about";
   if (path.includes("admin")) return "admin";
   return "";
 }
@@ -35,6 +36,7 @@ function renderNavbar() {
       <div class="navbar-menu">
         <a href="index.html" class="${active === "home" ? "active" : ""}">হোম</a>
         <a href="services.html" class="${active === "services" ? "active" : ""}">সার্ভিস</a>
+        <a href="about.html" class="${active === "about" ? "active" : ""}">আমাদের সম্পর্কে</a>
         <a href="tracking.html" class="${active === "tracking" ? "active" : ""}">ট্র্যাকিং</a>
         <a href="admin.html" class="${active === "admin" ? "active" : ""}">অ্যাডমিন</a>
       </div>
