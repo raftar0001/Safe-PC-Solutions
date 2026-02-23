@@ -20,8 +20,9 @@ service cloud.firestore {
       // Public: read a single document (for tracking by ticket ID)
       allow get: if true;
 
-      // Admin only: list all documents
-      allow list: if request.auth != null;
+      // Admin: list all; Public: list with limit (for profile phone lookup)
+      allow list: if request.auth != null
+        || request.query.limit <= 50;
 
       // Admin only: update
       allow update: if request.auth != null;

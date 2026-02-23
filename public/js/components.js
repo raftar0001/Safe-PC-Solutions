@@ -15,6 +15,7 @@ function getActivePage() {
   if (path.includes("blog")) return "blog";
   if (path.includes("tracking")) return "tracking";
   if (path.includes("about")) return "about";
+  if (path.includes("profile")) return "profile";
   if (path.includes("admin")) return "admin";
   return "";
 }
@@ -61,7 +62,7 @@ function renderNavbar() {
         <a href="/blog" class="${active === "blog" ? "active" : ""}">ব্লগ</a>
         <a href="/about" class="${active === "about" ? "active" : ""}">আমাদের সম্পর্কে</a>
         <a href="/tracking" class="${active === "tracking" ? "active" : ""}">ট্র্যাকিং</a>
-        <a href="/admin" class="${active === "admin" ? "active" : ""}">অ্যাডমিন</a>
+        <a href="/profile" class="${active === "profile" ? "active" : ""}">প্রোফাইল</a>
       </div>
     </div>
   `;
