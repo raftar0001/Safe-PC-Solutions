@@ -6,22 +6,33 @@ const WHATSAPP_MESSAGE = encodeURIComponent("আসসালামু আলা�
 // Determine active page
 function getActivePage() {
   const path = window.location.pathname;
-  if (path.endsWith("index.html") || path === "/" || path.endsWith("/public/")) return "home";
+  if (path === "/" || path.endsWith("index.html") || path.endsWith("/public/")) return "home";
   if (path.includes("services")) return "services";
+  if (path.includes("pricing")) return "pricing";
+  if (path.includes("amc")) return "amc";
+  if (path.includes("remote-support")) return "remote-support";
+  if (path.includes("parts")) return "parts";
+  if (path.includes("blog")) return "blog";
   if (path.includes("tracking")) return "tracking";
   if (path.includes("about")) return "about";
   if (path.includes("admin")) return "admin";
   return "";
 }
 
+// Check if current page is a services sub-page
+function isServicesGroup(page) {
+  return ["services", "pricing", "amc", "remote-support", "parts"].includes(page);
+}
+
 // Inject Navbar
 function renderNavbar() {
   const active = getActivePage();
+  const servicesActive = isServicesGroup(active);
   const nav = document.createElement("nav");
   nav.className = "navbar";
   nav.innerHTML = `
     <div class="container">
-      <a href="index.html" class="navbar-brand">
+      <a href="/" class="navbar-brand">
         <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect width="32" height="32" rx="8" fill="#1a73e8"/>
           <path d="M8 10h16v12H8z" fill="white" opacity="0.9"/>
@@ -34,11 +45,23 @@ function renderNavbar() {
         <span></span><span></span><span></span>
       </button>
       <div class="navbar-menu">
-        <a href="index.html" class="${active === "home" ? "active" : ""}">হোম</a>
-        <a href="services.html" class="${active === "services" ? "active" : ""}">সার্ভিস</a>
-        <a href="about.html" class="${active === "about" ? "active" : ""}">আমাদের সম্পর্কে</a>
-        <a href="tracking.html" class="${active === "tracking" ? "active" : ""}">ট্র্যাকিং</a>
-        <a href="admin.html" class="${active === "admin" ? "active" : ""}">অ্যাডমিন</a>
+        <a href="/" class="${active === "home" ? "active" : ""}">হোম</a>
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-toggle ${servicesActive ? "active" : ""}" aria-expanded="false">
+            সার্ভিস <span class="nav-dropdown-arrow">▼</span>
+          </button>
+          <div class="nav-dropdown-menu">
+            <a href="/services" class="${active === "services" ? "active" : ""}">সার্ভিসসমূহ</a>
+            <a href="/pricing" class="${active === "pricing" ? "active" : ""}">মূল্য হিসাব</a>
+            <a href="/amc" class="${active === "amc" ? "active" : ""}">AMC প্যাকেজ</a>
+            <a href="/remote-support" class="${active === "remote-support" ? "active" : ""}">রিমোট সাপোর্ট</a>
+            <a href="/parts" class="${active === "parts" ? "active" : ""}">পার্টস স্টোর</a>
+          </div>
+        </div>
+        <a href="/blog" class="${active === "blog" ? "active" : ""}">ব্লগ</a>
+        <a href="/about" class="${active === "about" ? "active" : ""}">আমাদের সম্পর্কে</a>
+        <a href="/tracking" class="${active === "tracking" ? "active" : ""}">ট্র্যাকিং</a>
+        <a href="/admin" class="${active === "admin" ? "active" : ""}">অ্যাডমিন</a>
       </div>
     </div>
   `;
@@ -52,9 +75,26 @@ function renderNavbar() {
     menu.classList.toggle("active");
   });
 
-  // Close menu on link click
+  // Dropdown toggle (mobile: click, desktop: hover handled by CSS)
+  const dropdown = nav.querySelector(".nav-dropdown");
+  const dropdownToggle = nav.querySelector(".nav-dropdown-toggle");
+  dropdownToggle.addEventListener("click", (e) => {
+    e.preventDefault();
+    dropdown.classList.toggle("open");
+    dropdownToggle.setAttribute("aria-expanded", dropdown.classList.contains("open"));
+  });
+
+  // Close menu on direct link click
   menu.querySelectorAll("a").forEach(link => {
     link.addEventListener("click", () => menu.classList.remove("active"));
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener("click", (e) => {
+    if (!dropdown.contains(e.target)) {
+      dropdown.classList.remove("open");
+      dropdownToggle.setAttribute("aria-expanded", "false");
+    }
   });
 }
 
@@ -69,14 +109,22 @@ function renderFooter() {
         <p style="font-size:0.85rem; margin-top:4px;">কেরানীগঞ্জের বিশ্বস্ত কম্পিউটার সেবা</p>
       </div>
       <div class="footer-links">
-        <a href="index.html">হোম</a>
-        <a href="services.html">সার্ভিস</a>
-        <a href="tracking.html">ট্র্যাকিং</a>
+        <a href="/">হোম</a>
+        <a href="/services">সার্ভিস</a>
+        <a href="/pricing">মূল্য হিসাব</a>
+        <a href="/blog">ব্লগ</a>
+        <a href="/parts">পার্টস</a>
+        <a href="/tracking">ট্র্যাকিং</a>
       </div>
       <div class="footer-contact">
         <div>📍 কেরানীগঞ্জ, ঢাকা, বাংলাদেশ</div>
         <div>📞 <a href="tel:+8801XXXXXXXXX">+880 1XXX-XXXXXX</a></div>
         <div>✉️ <a href="mailto:info@safepc.com">info@safepc.com</a></div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="footer-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29220.042269095855!2d90.34!3d23.71!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b0d5983f048d%3A0x2b9d47a3af279a0e!2z4KaV4KeH4Kaw4Ka-4Kao4KeA4KaX4Kae4KeN4Kac!5e0!3m2!1sbn!2sbd!4v1700000000000" width="100%" height="200" style="border:0;border-radius:8px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Safe PC Solutions এর অবস্থান"></iframe>
       </div>
     </div>
     <div class="container">

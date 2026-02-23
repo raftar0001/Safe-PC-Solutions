@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>মূল্য হিসাব — Safe PC Solutions</title>
+  <meta name="description" content="আপনার কম্পিউটার বা ল্যাপটপ মেরামতের আনুমানিক খরচ জানুন। ডিভাইস ও সমস্যা সিলেক্ট করে মূল্য দেখুন।">
+  <link rel="canonical" href="https://safepc.com/pricing">
+  <meta property="og:title" content="মূল্য হিসাব — Safe PC Solutions">
+  <meta property="og:description" content="আপনার কম্পিউটার বা ল্যাপটপ মেরামতের আনুমানিক খরচ জানুন।">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://safepc.com/pricing">
+  <meta property="og:locale" content="bn_BD">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <section class="pricing-calc-section">
+    <div class="container">
+      <h2 class="section-title">মূল্য <span>হিসাব</span></h2>
+      <p class="pricing-calc-subtitle">আপনার ডিভাইস ও সমস্যার ধরন সিলেক্ট করে আনুমানিক খরচ জানুন</p>
+
+      <div class="pricing-calc-card">
+        <div class="form-group">
+          <label for="calc-device">ডিভাইস সিলেক্ট করুন</label>
+          <select id="calc-device" class="form-control">
+            <option value="">— ডিভাইস বাছাই করুন —</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="calc-problem">সমস্যার ধরন</label>
+          <select id="calc-problem" class="form-control" disabled>
+            <option value="">— প্রথমে ডিভাইস বাছাই করুন —</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="calc-subtype">বিস্তারিত</label>
+          <select id="calc-subtype" class="form-control" disabled>
+            <option value="">— প্রথমে সমস্যা বাছাই করুন —</option>
+          </select>
+        </div>
+
+        <!-- Result -->
+        <div id="calc-result" class="calc-result">
+          <h3>আনুমানিক খরচ</h3>
+          <div class="calc-breakdown">
+            <div class="calc-row">
+              <span>সার্ভিস চার্জ</span>
+              <strong id="calc-service">৳০</strong>
+            </div>
+            <div class="calc-row">
+              <span>যন্ত্রাংশ (আনুমানিক)</span>
+              <strong id="calc-parts">৳০</strong>
+            </div>
+            <div class="calc-row calc-total">
+              <span>মোট আনুমানিক</span>
+              <strong id="calc-total">৳০</strong>
+            </div>
+          </div>
+          <p class="calc-note">* প্রকৃত মূল্য ডায়াগনস্টিকের পর নির্ধারিত হবে</p>
+          <a href="/#booking" class="btn btn-accent">বুকিং দিন</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/components.js"></script>
+  <script type="module" src="js/pricing.js"></script>
+</body>
+</html>
